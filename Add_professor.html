@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Add Professor</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css" media="screen" >
+        <link rel="stylesheet" href="css/font-awesome.min.css" media="screen" >
+        <link rel="stylesheet" href="css/animate-css/animate.min.css" media="screen" >
+        <link rel="stylesheet" href="css/lobipanel/lobipanel.min.css" media="screen" >
+        <link rel="stylesheet" href="css/select2/select2.min.css" >
+        <link rel="stylesheet" href="css/main.css" media="screen" >
+        <script src="js/modernizr/modernizr.min.js"></script>
+    </head>
+    <body class="top-navbar-fixed">
+        <div class="main-wrapper">
+
+ <!-- ========== TOP NAVBAR ========== -->
+			 <nav class="navbar top-navbar bg-white box-shadow">
+            	<div class="container-fluid">
+                    <div class="row">
+                        <div class="navbar-header no-padding">
+                			<a class="navbar-brand" href="Admin_dashboard.html">
+                			    Internal grading system | Admin
+                			</a>
+                			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                				<span class="sr-only">Toggle navigation</span>
+                				<i class="fa fa-ellipsis-v"></i>
+                			</button>
+                            <button type="button" class="navbar-toggle mobile-nav-toggle" >
+                				<i class="fa fa-bars"></i>
+                			</button>
+                		</div>
+                        <!-- /.navbar-header -->
+                         <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                			<ul class="nav navbar-nav" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                				<li class="hidden-xs hidden-xs"><!-- <a href="#">My Tasks</a> --></li>
+                               
+                			</ul>
+                            <!-- /.nav navbar-nav -->
+
+                			<ul class="nav navbar-nav navbar-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                				    <li><a href="#" class="color-danger text-center"><i class="fa fa-sign-out"></i> Logout</a></li>
+                			</ul>
+                            <!-- /.nav navbar-nav navbar-right -->
+                		</div>
+                    <!-- /.row -->
+            	</div>
+            	<!-- /.container-fluid -->
+            </nav>
+            <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
+            <div class="content-wrapper">
+                <div class="content-container">
+
+                    <!-- ========== LEFT SIDEBAR ========== -->
+                  <!-----Side bar-->
+                   <div class="left-sidebar bg-black-300 box-shadow ">
+                        <div class="sidebar-content">
+                            <div class="sidebar-nav">
+                                <ul class="side-nav color-gray">
+                                    <li>
+                                        <a href="Admin_dashboard.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </a>
+                                     
+                                    </li>
+
+                                    <li class="nav-header">
+                                        <span class="">Features</span>
+                                    </li>
+  <li class="has-children">
+                                        <a href="#"><i class="fa fa-file-text"></i> <span>Subjects</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="Add_subjects.html"><i class="fa fa-bars"></i> <span>Add Subject</span></a></li>
+                                            <li><a href="Manage_subjects.html"><i class="fa fa fa-server"></i> <span>Manage Subjects</span></a></li>
+                                        </ul>
+                                    </li>
+   <li class="has-children">
+                                        <a href="#"><i class="fa fa-users"></i> <span>Students</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="Add_students.html"><i class="fa fa-bars"></i> <span>Add Students</span></a></li>
+                                            <li><a href="Manage_students.html"><i class="fa fa fa-server"></i> <span>Manage Students</span></a></li>
+                                        </ul>
+                                    </li>
+<li class="has-children">
+										<a href="#"><i class="fa fa-users"></i> <span>Professors</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="Add_professor.php"><i class="fa fa-bars"></i> <span>Add Professors</span></a></li>
+                                            <li><a href="Manage_professors.html"><i class="fa fa fa-server"></i> <span>Manage Professors</span></a></li>
+                                        </ul>
+                                    </li>
+<li class="has-children">
+                                        <a href="#"><i class="fa fa-info-circle"></i> <span>Result</span> <i class="fa fa-angle-right arrow"></i></a>
+                                        <ul class="child-nav">
+                                            <li><a href="Add_result.html"><i class="fa fa-bars"></i> <span>Add Result</span></a></li>
+                                            <li><a href="Manage_results.html"><i class="fa fa fa-server"></i> <span>Manage Result</span></a></li> 
+                                        </ul>
+                                        <li><a href="Change_password.html"><i class="fa fa fa-server"></i> <span> Change Admin Password<</span></a></li>
+                                           
+                                    </li>
+                            </div>
+                            <!-- /.sidebar-nav -->
+                        </div>
+                        <!-- /.sidebar-content -->
+                    </div>
+                    <!-- /.left-sidebar -->
+
+                    <div class="main-page">
+
+                     <div class="container-fluid">
+                            <div class="row page-title-div">
+                                <div class="col-md-6">
+                                    <h2 class="title">Professor Allotment</h2>
+                                
+                                </div>
+                                
+                                <!-- /.col-md-6 text-right -->
+                            </div>
+                            <!-- /.row -->
+                            <div class="row breadcrumb-div">
+                                <div class="col-md-6">
+                                    <ul class="breadcrumb">
+                                        <li><a href="dashboard.html"><i class="fa fa-home"></i> Home</a></li>
+                                        <li class="active">Professor Allotment</li>
+                                    </ul>
+                                </div>
+                             
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <div class="container-fluid">
+                           
+                        <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="panel">
+                                            <div class="panel-heading">
+                                                <div class="panel-title">
+                                                    <h5>Fill the Professor info</h5>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                                <form class="form-horizontal" method="post">
+
+											<div class="form-group">
+											<label for="default" class="col-sm-2 control-label">Full Name</label>
+											<div class="col-sm-10">
+											<input type="text" name="fullanme" class="form-control" id="fullanme" required="required" autocomplete="off">
+											</div>
+											</div>
+											
+											<div class="form-group">
+											<label for="default" class="col-sm-2 control-label">Email id</label>
+											<div class="col-sm-10">
+											<input type="email" name="emailid" class="form-control" id="email" required="required" autocomplete="off">
+											</div>
+											</div>
+
+											<div class="form-group">
+											<label for="default" class="col-sm-2 control-label">Gender</label>
+											<div class="col-sm-10">
+											<input type="radio" name="gender" value="Male" required="required" checked="">Male <input type="radio" name="gender" value="Female" required="required">Female 
+											</div>
+											</div>
+                                             
+											 <div class="form-group">
+                                                        <label for="default" class="col-sm-2 control-label">Teaching Semester</label>
+                                                        <div class="col-sm-10">
+														<select name="class" class="form-control" id="default" required="required">
+											<option value="">Select Semester</option>
+										</select>
+                                                        </div>
+                                                    </div>
+											<div class="form-group">
+                                                        <label for="date" class="col-sm-2 control-label">DOB</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="date"  name="dob" class="form-control" id="date">
+                                                        </div>
+                                                    </div>
+                              
+                                                    <div class="form-group">
+                                                        <div class="col-sm-offset-2 col-sm-10">
+                                                            <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.col-md-12 -->
+                                </div>
+                    </div>
+                </div>
+                <!-- /.content-container -->
+            </div>
+            <!-- /.content-wrapper -->
+        </div>
+        <!-- /.main-wrapper -->
+        <script src="js/jquery/jquery-2.2.4.min.js"></script>
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <script src="js/pace/pace.min.js"></script>
+        <script src="js/lobipanel/lobipanel.min.js"></script>
+        <script src="js/iscroll/iscroll.js"></script>
+        <script src="js/prism/prism.js"></script>
+        <script src="js/select2/select2.min.js"></script>
+        <script src="js/main.js"></script>
+        <script>
+            $(function($) {
+                $(".js-states").select2();
+                $(".js-states-limit").select2({
+                    maximumSelectionLength: 2
+                });
+                $(".js-states-hide").select2({
+                    minimumResultsForSearch: Infinity
+                });
+            });
+        </script>
+    </body>
+</html>
