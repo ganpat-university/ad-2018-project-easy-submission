@@ -1,3 +1,35 @@
+<?php
+session_start();
+error_reporting(0);
+include('includes/config.php');
+if(strlen($_SESSION['alogin'])=="")
+    {   
+    header("Location: index.php"); 
+    }
+    else{
+if(isset($_POST['submit']))
+{
+$classname=$_POST['classname'];
+$classnamenumeric=$_POST['classnamenumeric']; 
+$section=$_POST['section'];
+$sql="INSERT INTO  tblclasses(ClassName,ClassNameNumeric,Section) VALUES(:classname,:classnamenumeric,:section)";
+$query = $dbh->prepare($sql);
+$query->bindParam(':classname',$classname,PDO::PARAM_STR);
+$query->bindParam(':classnamenumeric',$classnamenumeric,PDO::PARAM_STR);
+$query->bindParam(':section',$section,PDO::PARAM_STR);
+$query->execute();
+$lastInsertId = $dbh->lastInsertId();
+if($lastInsertId)
+{
+$msg="Class Created successfully";
+}
+else 
+{
+$error="Something went wrong. Please try again";
+}
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -35,99 +67,21 @@
         <div class="main-wrapper">
 
             <!-- ========== TOP NAVBAR ========== -->
-			<nav class="navbar top-navbar bg-white box-shadow">
-            	<div class="container-fluid">
-                    <div class="row">
-                        <div class="navbar-header no-padding">
-                			<a class="navbar-brand" href="Admin_dashboard.html">
-                			    Internal grading system | Admin
-                			</a>
-                			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-                				<span class="sr-only">Toggle navigation</span>
-                				<i class="fa fa-ellipsis-v"></i>
-                			</button>
-                            <button type="button" class="navbar-toggle mobile-nav-toggle" >
-                				<i class="fa fa-bars"></i>
-                			</button>
-                		</div>
-                        <!-- /.navbar-header -->
-                         <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                			<ul class="nav navbar-nav" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                				<li class="hidden-xs hidden-xs"><!-- <a href="#">My Tasks</a> --></li>
-                               
-                			</ul>
-                            <!-- /.nav navbar-nav -->
-
-                			<ul class="nav navbar-nav navbar-right" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                				    <li><a href="#" class="color-danger text-center"><i class="fa fa-sign-out"></i> Logout</a></li>
-                			</ul>
-                            <!-- /.nav navbar-nav navbar-right -->
-                		</div>
-                    <!-- /.row -->
-            	</div>
-            	<!-- /.container-fluid -->
-            </nav>
+            <?php include('includes/topbar.php');?>   
           <!-----End Top bar>
             <!-- ========== WRAPPER FOR BOTH SIDEBARS & MAIN CONTENT ========== -->
             <div class="content-wrapper">
                 <div class="content-container">
 
 <!-- ========== LEFT SIDEBAR ========== -->
-  <div class="left-sidebar bg-black-300 box-shadow ">
-                        <div class="sidebar-content">
-                            <div class="sidebar-nav">
-                                <ul class="side-nav color-gray">
-                                    <li>
-                                        <a href="dashboard.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span> </a>
-                                     
-                                    </li>
-
-                                    <li class="nav-header">
-                                        <span class="">Features</span>
-                                    </li>
-  <li class="has-children">
-                                        <a href="#"><i class="fa fa-file-text"></i> <span>Subjects</span> <i class="fa fa-angle-right arrow"></i></a>
-                                        <ul class="child-nav">
-                                            <li><a href="create-subject.php"><i class="fa fa-bars"></i> <span>Create Subject</span></a></li>
-                                            <li><a href="Manage_subjects.html"><i class="fa fa fa-server"></i> <span>Manage Subjects</span></a></li>
-                                        </ul>
-                                    </li>
-   <li class="has-children">
-                                        <a href="#"><i class="fa fa-users"></i> <span>Students</span> <i class="fa fa-angle-right arrow"></i></a>
-                                        <ul class="child-nav">
-                                            <li><a href="add-students.php"><i class="fa fa-bars"></i> <span>Add Students</span></a></li>
-                                            <li><a href="manage-students.php"><i class="fa fa fa-server"></i> <span>Manage Students</span></a></li>
-                                        </ul>
-                                    </li>
-<li class="has-children">
-										<a href="#"><i class="fa fa-users"></i> <span>Professors</span> <i class="fa fa-angle-right arrow"></i></a>
-                                        <ul class="child-nav">
-                                            <li><a href="add-students.php"><i class="fa fa-bars"></i> <span>Add Professors</span></a></li>
-                                            <li><a href="manage-students.php"><i class="fa fa fa-server"></i> <span>Manage Professors</span></a></li>
-                                        </ul>
-                                    </li>
-<li class="has-children">
-                                        <a href="#"><i class="fa fa-info-circle"></i> <span>Result</span> <i class="fa fa-angle-right arrow"></i></a>
-                                        <ul class="child-nav">
-                                            <li><a href="add-result.php"><i class="fa fa-bars"></i> <span>Add Result</span></a></li>
-                                            <li><a href="manage-results.php"><i class="fa fa fa-server"></i> <span>Manage Result</span></a></li>
-                                           
-                                        </ul>
-                                        <li><a href="change-password.php"><i class="fa fa fa-server"></i> <span> Admin Change Password</span></a></li>
-                                           
-                                    </li>
-                            </div>
-                            <!-- /.sidebar-nav -->
-                        </div>
-                        <!-- /.sidebar-content -->
-                    </div>                
+<?php include('includes/leftbar.php');?>                   
  <!-- /.left-sidebar -->
 
                     <div class="main-page">
                         <div class="container-fluid">
                             <div class="row page-title-div">
                                 <div class="col-md-6">
-                                    <h2 class="title">Create Semester</h2>
+                                    <h2 class="title">Create Student Class</h2>
                                 </div>
                                 
                             </div>
@@ -136,8 +90,8 @@
                                 <div class="col-md-6">
                                     <ul class="breadcrumb">
             							<li><a href="dashboard.php"><i class="fa fa-home"></i> Home</a></li>
-            							<li><a href="#">Semester</a></li>
-            							<li class="active">Create Semester</li>
+            							<li><a href="#">Classes</a></li>
+            							<li class="active">Create Class</li>
             						</ul>
                                 </div>
                                
@@ -148,6 +102,11 @@
 
                         <section class="section">
                             <div class="container-fluid">
+
+                             
+
+                              
+
                                 <div class="row">
                                     <div class="col-md-8 col-md-offset-2">
                                         <div class="panel">
@@ -156,7 +115,17 @@
                                                     <h5>Create Student Class</h5>
                                                 </div>
                                             </div>
-										<div class="panel-body">
+           <?php if($msg){?>
+<div class="alert alert-success left-icon-alert" role="alert">
+ <strong>Well done!</strong><?php echo htmlentities($msg); ?>
+ </div><?php } 
+else if($error){?>
+    <div class="alert alert-danger left-icon-alert" role="alert">
+                                            <strong>Oh snap!</strong> <?php echo htmlentities($error); ?>
+                                        </div>
+                                        <?php } ?>
+  
+                                            <div class="panel-body">
 
                                                 <form method="post">
                                                     <div class="form-group has-success">
@@ -197,6 +166,10 @@
                                     <!-- /.col-md-8 col-md-offset-2 -->
                                 </div>
                                 <!-- /.row -->
+
+                               
+                               
+
                             </div>
                             <!-- /.container-fluid -->
                         </section>
@@ -232,3 +205,4 @@
         <!-- ========== ADD custom.js FILE BELOW WITH YOUR CHANGES ========== -->
     </body>
 </html>
+<?php  } ?>
